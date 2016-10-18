@@ -50,6 +50,7 @@ public class MiniHttp
                 in = new BufferedReader(new InputStreamReader(is));
 
                 String line = "";
+                // TODO
                 while ((line = in.readLine()) != null)
                 {
                     sb.append(line + "\n");
@@ -58,7 +59,8 @@ public class MiniHttp
             }
             catch (Exception e)
             {
-                e.printStackTrace();
+                System.out.println("Bad request " + url);
+            	e.printStackTrace();
             }
             finally
             {
