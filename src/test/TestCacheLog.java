@@ -1,10 +1,6 @@
 package test;
 
-<<<<<<< HEAD
-import cs1.CacheLog;
-=======
 import main.CacheLog;
->>>>>>> lesterBranch2
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;

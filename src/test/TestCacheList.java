@@ -1,10 +1,6 @@
 package test;
 
-<<<<<<< HEAD
-import cs1.CacheList;
-=======
 import main.CacheList;
->>>>>>> lesterBranch2
 import org.junit.Test;
 import static org.junit.Assert.*;
 
