@@ -28,7 +28,7 @@ public class TestCacheLog {
         
         try {
             //read file for make sure info saved
-            Scanner input = new Scanner(new File("data/output.log"));
+            Scanner input = new Scanner(new File("checkout/data/output.log"));
             int numFound = 0;
             while (input.hasNextLine()){
                 String line = input.nextLine();
