@@ -17,7 +17,7 @@
     <target name="checkout.repository">
         <exec executable="git">
             <arg value="clone" />
-            <arg value="https://github.com/k3j123/CSC439_LRUProxy.git"/>
+            <arg value="https://github.com/k3j123/CSC439_LRUProxy" dest="."/>
             <arg value="checkout/"/>
         </exec>
 
