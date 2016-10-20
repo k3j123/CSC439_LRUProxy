@@ -19,7 +19,7 @@ public class TestCacheLog {
 
     @Test
     public void testCacheLog() {
-        CacheLog cache = new CacheLog("checkout/data/");
+        CacheLog cache = new CacheLog("checkout/testData/");
         cache.openLogForAppend();
         
         cache.logHit("www.my_test.com");
