@@ -16,7 +16,7 @@ public class TestCacheToFile {
      
     @Test
     public void testCacheToFile() {
-        CacheToFile cache = new CacheToFile("./data/");
+        CacheToFile cache = new CacheToFile("checkout/data/");
         StringBuffer sb = new StringBuffer();
         sb.append("content of www.test.com");
         cache.write("www.test.com", sb);
