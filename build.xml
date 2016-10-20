@@ -12,6 +12,8 @@
     <property name="httpcore.jar" location="checkout/lib/httpcore-4.1.jar"/>
     <property name="commons-logging.jar" location="checkout/lib/commons-logging-1.1.1.jar/"/>
 
+
+    //This target checks out the latest version of the source code from the reposity
     <target name="checkout.repository">
         <exec executable="git">
             <arg value="clone" />
@@ -21,6 +23,7 @@
 
     </target>
 
+    //This target compiles the source code of the LRU Proxy
     <target name="compile.java" depends="checkout.repository">
         <mkdir dir="${target.classes.java.dir}"/>
         <mkdir dir= "src/test/data" />
@@ -35,6 +38,7 @@
         </javac>
     </target>
 
+    //This target is to help compile the test files that you have developed
     <target name="compile.test" depends="compile.java">
         <mkdir dir="${target.classes.test.dir}"/>
         <javac destdir="${target.classes.test.dir}">
@@ -49,10 +53,13 @@
         </javac>
     </target>
 
+    //Compilation of the Java files
     <target name="compile" depends="compile.java,compile.test">
-
+        <echo >Compiling now... </echo>
+        <echo >Compilation successful! </echo>
     </target>
 
+    //This Target is used to run the test suite file
     <target name="test" depends="compile">
         <mkdir dir="${target.report.dir}"/>
         <junit printsummary="yes" haltonerror="yes" haltonfailure="yes" fork="yes">
@@ -70,6 +77,7 @@
         </junit>
     </target>
 
+    //This target produces a HTML report that details the results of the test runs
     <target name="report" depends="test">
         <mkdir dir="${target.report.dir}/html"/>
         <junitreport todir="${target.report.dir}">
