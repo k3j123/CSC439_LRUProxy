@@ -14,7 +14,7 @@ public class TestCacheList {
 
     @Test
     public void testCacheList() {
-        CacheList cache = new CacheList("data", 3);
+        CacheList cache = new CacheList("data/", 3);
         
         cache.addNewObject("site1.com", false);
         cache.addNewObject("site2.com", false);
