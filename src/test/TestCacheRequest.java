@@ -14,7 +14,7 @@ public class TestCacheRequest {
 
     @Test
     public void testCacheRequest() {
-        CacheRequest cache = new CacheRequest("/Users/Jake/Documents/workspace/lru/src/");
+        CacheRequest cache = new CacheRequest("");
         assertEquals(cache.read(), "www.google.com");
         assertEquals(cache.read(), "www.yahoo.com");
         assertEquals(cache.read(), "www.wikipedia.com");
