@@ -109,14 +109,18 @@ public class Proxy
                 // Step 3: Based on hit/miss, add to LRU
                 // cache list.  This logs a message if
                 // an old cached object is deleted
-                String removedURL=cacheList.addNewObject(url, hit);
+                if (!hit) { 
+                String removedURL=cacheList.addNewObject(url);
                 if (removedURL.trim().length()>0)
                 {
                     //webCache.removeCache(removedURL);
                     // physically removed the cached file
                     cacheToFile.remove(removedURL);
                 }
-
+                }else{
+                	//move url to front
+                	cacheToFile.remove(removedURL);
+                }
                 // Step 4: If hit, send data to output
                 //         If miss, pull data and save it
                 if (hit)
@@ -169,7 +173,7 @@ public class Proxy
 
     public static void main(String args[])
     {
-        if (args.length!=3)
+        if (args.length==3)
         {
             try
             {

@@ -92,7 +92,7 @@ public class CacheToFile
                 line=in.readLine();
             }
 
-            ostream.close();
+            //ostream.close();
             in.close();
         }
         catch (Exception e)
