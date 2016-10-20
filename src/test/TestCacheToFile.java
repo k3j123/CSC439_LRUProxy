@@ -10,7 +10,7 @@ import org.junit.Test;
 import main.*;
 public class TestCacheToFile {
 private String URL = "www.test.com";
-private String directory = "./src/test/data/";
+private String directory = "checkout/testData/";
 private String code = "<h1>Testing!<\\h1>";
 // Test the write method to see if it creates the file
 @Test
