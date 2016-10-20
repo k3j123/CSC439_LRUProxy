@@ -49,4 +49,16 @@ public class CacheRequest
         }
         return line;
     }
+    /************
+     * close file
+     ************/
+    public void close() {
+    	try {
+    		in.close ();
+    	} catch (IOException ex){
+    		ex.printStackTrace();
+    		
+    	}
+    }
+     
 }
