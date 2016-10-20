@@ -73,7 +73,7 @@ public class CacheToFile
      * And writes it to System.out.
      * @param url
      */
-    public void read(String url)
+    public String read(String url)
     {
         try
         {
@@ -94,6 +94,7 @@ public class CacheToFile
 
             //ostream.close();
             in.close();
+            return line;
         }
         catch (Exception e)
         {
