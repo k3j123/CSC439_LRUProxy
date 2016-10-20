@@ -1,6 +1,10 @@
 package test;
 
+<<<<<<< HEAD
 import cs1.CacheToFile;
+=======
+import main.CacheToFile;
+>>>>>>> lesterBranch2
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.Test;

@@ -1,3 +1,4 @@
+package main;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -5,7 +6,7 @@ import java.io.InputStreamReader;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.HttpResponse;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 /**
  * MiniHttp
@@ -26,7 +27,7 @@ public class MiniHttp
     public MiniHttp()
     {
         in = null;
-        httpclient = new DefaultHttpClient();
+        httpclient = HttpClientBuilder.create().build();
     }
 
     public StringBuffer fetch(String URL)
@@ -50,6 +51,7 @@ public class MiniHttp
                 in = new BufferedReader(new InputStreamReader(is));
 
                 String line = "";
+                // TODO
                 while ((line = in.readLine()) != null)
                 {
                     sb.append(line + "\n");
@@ -58,7 +60,8 @@ public class MiniHttp
             }
             catch (Exception e)
             {
-                e.printStackTrace();
+                System.out.println("Bad request " + URL);
+            	e.printStackTrace();
             }
             finally
             {
