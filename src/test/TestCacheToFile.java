@@ -24,11 +24,11 @@ public class TestCacheToFile {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         
         System.setOut(new PrintStream(outContent));
-        String consoleOut = cache.read("www.test.com");
+        cache.read("www.test.com");
         
         String expectedOutput  = "content of www.test.com";
         // Do the actual assertion.
-        assertEquals(expectedOutput,consoleOut);
+        assertEquals(expectedOutput,outContent.toString());
         
         //check is Cached
         assertTrue(cache.isCached("www.test.com"));
