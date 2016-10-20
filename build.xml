@@ -1,0 +1,91 @@
+<project name="CSC439_LRUProxy" default="compile" >
+    <property file="build.properties"/>
+    <property name="src.dir" location="checkout/src" />
+    <property name="src.main.dir" location="${src.dir}/main" />
+    <property name="src.test.dir" location="${src.dir}/test" />
+    <property name="target.dir" location="target" />
+    <property name="target.classes.java.dir" location="${target.dir}/classes/main" />
+    <property name="target.classes.test.dir" location="${target.dir}/classes/test" />
+    <property name="target.report.dir" location="${target.dir}/report" />
+    <property name="junit.jar" location="checkout/lib/junit-4.9b2.jar"/>
+    <property name="httpclient.jar" location="checkout/lib/httpclient-4.1.1.jar"/>
+    <property name="httpcore.jar" location="checkout/lib/httpcore-4.1.jar"/>
+    <property name="commons-logging.jar" location="checkout/lib/commons-logging-1.1.1.jar/"/>
+
+
+
+    <target name="checkout.repository">
+        <exec executable="git">
+            <arg value="clone" />
+            <arg value="https://github.com/k3j123/CSC439_LRUProxy/tree/lesterBranch2.git"/>
+            <arg value="checkout/"/>
+        </exec>
+
+    </target>
+
+
+    <target name="compile.java" depends="checkout.repository">
+        <mkdir dir="${target.classes.java.dir}"/>
+        <mkdir dir= "src/test/data" />
+        <javac destdir="${target.classes.java.dir}">
+            <src path="${src.main.dir}"/>
+            <classpath>
+                <pathelement location="${target.classes.java.dir}"/>
+                <pathelement location="${httpclient.jar}"/>
+                <pathelement location="${httpcore.jar}" />
+                <pathelement location="${commons-logging.jar}" />
+            </classpath>
+        </javac>
+    </target>
+
+
+    <target name="compile.test" depends="compile.java">
+        <mkdir dir="${target.classes.test.dir}"/>
+        <javac destdir="${target.classes.test.dir}">
+            <src path="${src.test.dir}"/>
+            <classpath>
+                <pathelement location="${target.classes.java.dir}" />
+                <pathelement location="${junit.jar}"/>
+                <pathelement location="${httpclient.jar}"/>
+                <pathelement location="${httpcore.jar}"/>
+                <pathelement location="${commons-logging.jar}"/>
+            </classpath>
+        </javac>
+    </target>
+
+
+    <target name="compile" depends="compile.java,compile.test">
+        <echo >Compiling now... </echo>
+        <echo >Compilation successful! </echo>
+    </target>
+
+
+    <target name="test" depends="compile">
+        <mkdir dir="${target.report.dir}"/>
+        <junit printsummary="yes" haltonerror="yes" haltonfailure="yes" fork="yes">
+            <formatter type="plain" usefile="false" />
+            <formatter type="xml" usefile="true" />
+            <test name="test.TestProxySuite" todir="${target.report.dir}" />
+            <classpath>
+                <pathelement location="${target.classes.java.dir}" />
+                <pathelement location="${target.classes.test.dir}" />
+                <pathelement location="${junit.jar}"/>
+                <pathelement location="${httpclient.jar}"/>
+                <pathelement location="${httpcore.jar}"/>
+                <pathelement location="${commons-logging.jar}"/>
+            </classpath>
+        </junit>
+    </target>
+
+    
+    <target name="report" depends="test">
+        <mkdir dir="${target.report.dir}/html"/>
+        <junitreport todir="${target.report.dir}">
+            <fileset dir="${target.report.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${target.report.dir}/html"/>
+        </junitreport>
+    </target>
+
+</project>
