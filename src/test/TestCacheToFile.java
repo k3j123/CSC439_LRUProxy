@@ -28,7 +28,7 @@ public class TestCacheToFile {
         
         String expectedOutput  = "content of www.test.com";
         // Do the actual assertion.
-        assertEquals(expectedOutput,consoleOutput);
+        assertEquals(expectedOutput,consoleOutput.toString());
         
         //check is Cached
         assertTrue(cache.isCached("www.test.com"));
