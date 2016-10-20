@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.HttpResponse;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
  * MiniHttp
@@ -27,7 +27,7 @@ public class MiniHttp
     public MiniHttp()
     {
         in = null;
-        httpclient = HttpClientBuilder.create().build();
+        httpclient = new DefaultHttpClient();
     }
 
     public StringBuffer fetch(String URL)
