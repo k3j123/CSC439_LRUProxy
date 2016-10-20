@@ -32,7 +32,7 @@ thisFile.remove(URL);
 public void testWrite() throws IOException{
 CacheToFile thisFile = new CacheToFile(directory);
 System.out.println("Testing write() method");
-String fileName = "./src/test/data/www.test.com";
+String fileName = "checkout/testData/www.test.com";
 StringBuffer sb = new StringBuffer(code);
 // Calling write method
 thisFile.write(URL, sb);
