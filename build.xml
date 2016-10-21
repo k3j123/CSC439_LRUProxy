@@ -27,7 +27,7 @@
     <target name="compile.java" depends="checkout.repository">
         <mkdir dir="${target.classes.java.dir}"/>
         <mkdir dir= "src/test/data" />
-        <javac destdir="${target.classes.java.dir}">
+        <javac destdir="${target.classes.java.dir}" includeantruntime="false">
             <src path="${src.main.dir}"/>
             <classpath>
                 <pathelement location="${target.classes.java.dir}"/>
@@ -41,7 +41,7 @@
 
     <target name="compile.test" depends="compile.java">
         <mkdir dir="${target.classes.test.dir}"/>
-        <javac destdir="${target.classes.test.dir}">
+        <javac destdir="${target.classes.test.dir}" includeantruntime="false">
             <src path="${src.test.dir}"/>
             <classpath>
                 <pathelement location="${target.classes.java.dir}" />
