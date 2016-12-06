@@ -54,3 +54,22 @@ timestamp with each cached web page. When the cache replacement occurs, you need
 record an entry in the log file to indicate which cached page is evicted. A “cache
 eviction” log entry looks like this: "Mon June 13 03:25:58 2011 www.ask.com the
 cached page is evicted"
+
+---------------------------------------------------------------------
+Most Recently Used (MRU)
+---------------------------------------------------------------------
+Discards, in contrast to LRU, the most recently used items first. In findings presented at the 11th VLDB conference, Chou and DeWitt noted that "When a file is being repeatedly scanned in a [Looping Sequential] reference pattern, MRU is the best replacement algorithm."[5] Subsequently other researchers presenting at the 22nd VLDB conference noted that for random access patterns and repeated scans over large datasets (sometimes known as cyclic access patterns) MRU cache algorithms have more hits than LRU due to their tendency to retain older data.[6] MRU algorithms are most useful in situations where the older an item is, the more likely it is to be accessed.
+The access sequence for the below example is A B C D E C D B.
+MRU working
+Here, A B C D are placed in the cache as there is still space available. At the 5th access E, we see that the block which held D is now replaced with E as this block was used most recently. Another access to C and at the next access to D, C is replaced as it was the block accessed just before D and so on.
+
+---------------------------------------------------------------------
+Random Replacement (RR)
+---------------------------------------------------------------------
+Randomly selects a candidate item and discards it to make space when necessary. This algorithm does not require keeping any information about the access history. For its simplicity, it has been used in ARM processors.[7] It admits efficient stochastic simulation.[8]
+The access sequence for the below example is A B C D E B D F
+
+---------------------------------------------------------------------
+Least-Frequently Used (LFU)
+---------------------------------------------------------------------
+Counts how often an item is needed. Those that are used least often are discarded first. This works very similar to LRU except that instead of storing the value of how recently a block was accessed, we store the value of how many times it was accessed. So of course while running an access sequence we will replace a block which was used least number of times from our cache. E.g., if A was used (accessed) 5 times and B was used 3 times and others C and D were used 10 times each, we will replace B.
