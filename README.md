@@ -3,7 +3,7 @@
 ---------------------------------------------------------------------
 Checking out the Repository
 ---------------------------------------------------------------------
-To properly checkout the repository, simply go to the GitHub link (https://github.com/k3j123/CSC439_LRUProxy),
+To properly checkout the repository, simply go to the GitHub link (https://github.com/k3j123/CSC439_LRUProxy/tree/Phase_2),
 and click on the green button that says "Clone or Download" --> "Download Zip".
 
 
